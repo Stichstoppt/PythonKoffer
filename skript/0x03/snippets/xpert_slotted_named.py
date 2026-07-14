@@ -1,0 +1,116 @@
+# (C) A.Voss, a.voss@fh-aachen.de, info@codebasedlearning.dev
+
+"""
+This snippet discusses __slots__ and NamedTuple — two memory-light /
+immutable-friendly alternatives to a plain class with __dict__ or to a
+@dataclass.
+
+Teaching focus
+  - __slots__ instead of __dict__ (no dynamic attributes, smaller footprint)
+  - NamedTuple as an immutable, hashable, tuple-compatible data container
+  - tradeoffs vs. @dataclass (mutability, methods, post-init)
+
+__slots__
+  - By default, Python stores instance attributes in a per-instance dictionary
+    called __dict__. This allows dynamic attribute creation but uses more memory.
+  - __slots__ declares a fixed set of allowed attributes, replacing __dict__
+    with a more compact internal structure.
+  - Using __slots__ prevents adding arbitrary attributes at runtime and can
+    improve memory usage and attribute access speed.
+
+NamedTuple
+  - NamedTuple is an alternative for simple immutable data containers.
+  - Like dataclass, it generates __repr__, __eq__, and supports type hints.
+  - Unlike dataclass, instances are immutable by default (they are tuples),
+    can be used as dictionary keys, and have less memory overhead.
+
+Rule of thumb
+  - Prefer NamedTuple for small, immutable records.
+  - Prefer @dataclass (see e_dataclass.py) for mutable objects or when you
+    need methods and post-init logic.
+
+See also
+  - https://docs.python.org/3/library/typing.html#typing.NamedTuple
+  - https://docs.python.org/3/reference/datamodel.html#slots
+  - e_dataclass.py — for the @dataclass counterpart.
+"""
+
+import sys
+from typing import NamedTuple
+
+from utils import print_function_header
+
+
+class SlottedPerson:
+    """ person class with __slots__ instead of __dict__ """
+    __slots__ = ('name', 'age')
+
+    def __init__(self, name: str, age: int):
+        self.name = name
+        self.age = age
+
+    def __repr__(self):
+        return f"SlottedPerson({self.name!r}, {self.age})"
+
+
+@print_function_header
+def show_slots():
+    """ __slots__ vs __dict__ """
+
+    sp = SlottedPerson("Eve", 30)
+    print(f" 1| {sp=}, {sp.name=}, {sp.age=}")
+
+    try:
+        sp.hobby = "chess"                  # AttributeError: no __dict__  # ty:ignore[unresolved-attribute]
+    except AttributeError as e:
+        print(f" 2| cannot add attribute: {e}")
+
+    print(f" 3| has __dict__: {hasattr(sp, '__dict__')}")
+    print(f" 4| has __slots__: {sp.__slots__=}")
+
+    print(f" 5| {sys.getsizeof(sp)=}")
+    #person = Person("Alice", 20)
+    #p#rint(f" 6| {sys.getsizeof(person)=}, {sys.getsizeof(person.__dict__)=})")
+
+
+"""
+Topic: NamedTuple comparison
+"""
+
+
+class PointNT(NamedTuple):
+    """ an immutable 2D point as NamedTuple """
+    x: int
+    y: int
+
+
+@print_function_header
+def compare_with_namedtuple():
+    """ dataclass vs NamedTuple """
+
+    #p_dc = Point(x=1, y=2)
+    p_nt = PointNT(x=1, y=2)
+
+    #print(f" 1| dataclass: {p_dc=}, {type(p_dc)=}")
+    print(f" 2| namedtuple: {p_nt=}, {type(p_nt)=}")
+
+    # NamedTuple supports tuple unpacking
+    x, y = p_nt
+    print(f" 3| unpacking: {x=}, {y=}")
+
+    # NamedTuple can be used as dict key (immutable + hashable)
+    lookup = {p_nt: "origin-ish"}
+    print(f" 4| as dict key: {lookup[PointNT(1, 2)]=}")
+
+    # NamedTuple supports indexing like a tuple
+    print(f" 5| index access: {p_nt[0]=}, {p_nt[1]=}")
+
+    # immutability
+    try:
+        p_nt.x = 99                         # ty:ignore[invalid-assignment]
+    except AttributeError as e:
+        print(f" 6| immutable: {e}")
+
+if __name__ == '__main__':
+    show_slots()
+    compare_with_namedtuple()
