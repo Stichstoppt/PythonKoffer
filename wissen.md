@@ -14,3 +14,7 @@ Zwei oder mehr Threads blockieren sich dauerhaft gegenseitig, weil jeder auf ein
 
 # Livelock
 Livelock: Zwei oder mehr Threads ändern als Reaktion aufeinander ständig aktiv ihren Zustand, kommen dadurch aber nie mit ihrer eigentlichen Arbeit voran (wie zwei Fußgänger, die im Flur synchron immer wieder in dieselbe Richtung ausweichen).
+
+# Wie erweitert man eine Zeile? 
+return \
+    result                              # This is one logical line, the backslash continues it.
