@@ -1,3 +1,7 @@
+Kapitel 1 fertig
+Kapitel 8 fertig
+
+
 -classes
     -abc
     -cls keyword

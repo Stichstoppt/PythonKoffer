@@ -1,3 +1,6 @@
+# Integer Caching
+In Python gibt is bei Integern genau dann True zurück, wenn sich die Werte im Bereich von -5 bis 256 befinden.
+
 # Division
 / ist echte Division, kein Flooring
 // Floor Division wie man sie aus Java oder C kennt. Float bleibt Float -> 1.5/1.0 = 1.0
@@ -18,3 +21,29 @@ Livelock: Zwei oder mehr Threads ändern als Reaktion aufeinander ständig aktiv
 # Wie erweitert man eine Zeile? 
 return \
     result                              # This is one logical line, the backslash continues it.
+
+## Primitives
+
+# Ints
+Ints können beliebig lang sein, d. h. sie sind "exakt". Der Speicherbedarf hängt von der Länge ab, daher benötigen kurze Ints weniger Speicher.
+
+# Bools
+Wichtig: Eine Konvertierung in ein Bool prüft im Wesentlichen, ob der Wert eine Art von Null oder leer ist (false) oder nicht, d. h. !=0 (true). Rangfolge der Booleschen Operatoren: not > and > or
+
+# Floats
+Fast alle Python-Varianten implementieren 'float' nach IEEE-754 "Double Precision", d. h. als Standard-'double'. Konstanten wie 'inf' können manchmal verwendet werden, um Variablenin Algorithmen zu initialisieren. Achtung: Operationen mit 'nan' oder 'inf' können zu seltsamem oderunerwartetem Verhalten führen. Jede Operation mit 'nan' ergibt 'nan'. Bei 'inf' hängt es davon ab. Normale Float-Mathematik bleibt oft auf dem Fast-Path der CPU(vektorisiert, gepipelined). Sobald 'inf' oder 'nan' ins Spiel kommen, müssen CPUs/Runtimes oft langsame Pfade nehmen, Extra-Checks machenoder IEEE-754-Exceptions auslösen/maskieren.
+
+========================
+float_inf = float("inf")
+========================
+
+# Strings
+Überraschenderweise kann man Strings, aber auch Kommentare, mit '' statt "" definieren. Die Wahl ist frei, es gibt keine Empfehlung. Wichtig: Strings sind immutable(unveränderlich), d. h. Operationen wie '+=', 'replace', 'upper' etc. geben immer einen neuen String zurück. 
+
+# None
+None wird oft verwendet, um einen nicht spezifizierten Wert darzustellen,wie einen nicht gesetzten Parameter. Es ähnelt einer Null-Referenz undist false, wenn es in eine Boolesche Variable konvertiert wird.
+
+# Wert-Gleichheit 
+(==):Prüft, ob zwei Objekte denselben Wert haben. Für die meisten eingebauten Typen nutzt Python typspezifische __eq__-Methoden, um den Wertvergleich zu implementieren. Zwei verschiedene Objekte im Speicher können vom Wert her dennoch gleich sein. 
+Identitäts-Gleichheit (is): Prüft, ob zwei Objekte exakt dieselbe Instanz sind, d. h. identisch im Speicher.is ergibt nur dann True, wenn zwei Variablen auf dasselbe Objekt verweisen.
+
