@@ -100,10 +100,73 @@ def processpool():
         executor.map(basic_process, tasks)
 
 
-"""
-- Weitere Themen
-e_critical_regions.py
-f_condition_variables.py
-study_locks.py
-study_producer_consumer.py
-"""
+""" LOCK/MUTEX - CRITICAL REGIONS"""
+
+lock = threading.Lock()  # Init Lock/Mutex
+
+
+def use_lock():
+    def worker(*args, **kwargs):
+        with lock:  # use contextmanager!!
+            some_function_which_should_be_executed_in_thread(
+                "Hello",
+                "Alice",
+                age=28,
+                city="NYC",
+            )
+
+        # without contextmanager
+        # lock.acquire()
+        # current = ...
+        # lock.release()
+
+    thread_object = threading.Thread(
+        target=some_function_which_should_be_executed_in_thread,
+        name="thread_object",  # good practice for logging, debugging, inspecting running threads
+        args=("Hello", "Alice"),  # Positional arguments
+        kwargs={"age": 28, "city": "NYC"},  # Keyword arguments
+        daemon=False,  # If thread is daemon, no join!
+    )
+
+    thread_object.start()
+    thread_object.join()
+
+
+#############################
+
+""" CONDITION VARIABLE """
+
+import time
+
+
+def use_condition_variables():
+    ###### IRRELEVANT ########
+    def sign_in(budget: float):
+        time.sleep(budget)
+
+    load_image = sign_in
+    ##########################
+
+    signal = threading.Condition()
+    ready = False  # shared state the receiver checks
+
+    def sender():
+        nonlocal ready
+        sign_in(budget=0.05)  # even if we fire 'first', no signal is lost
+        # HIER WICHTIG
+        with signal:
+            ready = True  # set the state ...
+            signal.notify()
+        ################
+
+    def receiver():
+        load_image(budget=0.05)  # modify to see predicate guard in action
+        # HIER WICHTIG
+        with signal:
+            while not ready:  # while because of spurious makeups;
+                signal.wait()  # if 'ready' is already set, we never wait -> order-independent
+        ################
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
+        executor.submit(receiver)
+        executor.submit(sender)
