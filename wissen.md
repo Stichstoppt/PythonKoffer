@@ -39,6 +39,28 @@ Ein Objekt, welches auch Attribute und Methoden(@classmethod) haben kann.
 # Lazy Evaluation
 Lazy Evaluation bedeutet, dass Ausdrücke oder Daten erst in dem Moment berechnet werden, in dem ihr Ergebnis tatsächlich benötigt wird.
 
+# Python Variable resolving: LEGB 
+- Python resolves names using the so-called LEGB rule, which is named after
+the Python scope for names:
+    - Local (or function) scope is the code block or body of any Python
+    function or lambda expression.
+    - Enclosing (or nonlocal) scope is a special scope that only exists
+    for nested functions.
+    - Global (or module) scope is the top-most scope in a Python program,
+    script, or module. This Python scope contains all the names that
+    you define at the top level of a program or a module. Names in this
+    Python scope are visible from everywhere in your code.
+    - Built-in scope is a special Python scope that's created or loaded
+    whenever you run a script or open an interactive session. This scope
+    contains names such as keywords, functions, exceptions, and other
+    attributes that are built into Python.
+
+Python scopes are implemented as dictionaries that map names to objects. 
+These dictionaries are commonly called 'namespaces'. These are the 
+concrete mechanisms that Python uses to store names. 
+
+# global keyword
+Das Schlüsselwort global signalisiert Python, dass eine Variable innerhalb einer Funktion nicht als lokale Variable erstellt werden soll, sondern sich auf eine bereits existierende Variable im globalen Gültigkeitsbereich (dem Hauptskript) beziehthey’re stored in a special attribute called .__dict__ in a module.
 
 ## Primitives
 
