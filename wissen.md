@@ -22,6 +22,9 @@ Livelock: Zwei oder mehr Threads ändern als Reaktion aufeinander ständig aktiv
 return \
     result                              # This is one logical line, the backslash continues it.
 
+# Wie verhalten sich default Values in Python?
+Nutze niemals veränderliche Objekte (wie [] oder {} oder Instanzen von Klassen ) als Standardargumente in Funktionsdefinitionen, da diese nur ein einziges Mal beim Laden des Codes erstellt und danach von allen Funktionsaufrufen geteilt werden. Verwende stattdessen stattdessen immer None als Standardwert und initialisiere die Liste sicher erst innerhalb der Funktion mit if param is None: param = [].
+
 ## Primitives
 
 # Ints

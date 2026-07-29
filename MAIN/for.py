@@ -8,7 +8,7 @@ def some_condition(x):
 
 
 # =============================================================================
-# 1. CORE MECHANICS & BUILT-IN ITERATORS
+# CORE MECHANICS & BUILT-IN ITERATORS
 # =============================================================================
 def core_mechanics():
     print("--- 1. Core Mechanics ---")
@@ -16,6 +16,15 @@ def core_mechanics():
     # The standard range (start, stop, step) -> Note: 'stop' is exclusive
     for i in range(0, 10, 2):
         print(f"Range step 2: {i}")  # 0, 2, 4, 6, 8
+
+    # Iterables (Strings, list)
+    list = [1, 2, 3]
+    for item in list:
+        ...
+
+    str = "abc"
+    for char in str:
+        ...
 
     # Reverse iteration using reversed()
     items = ["a", "b", "c"]
@@ -78,7 +87,7 @@ def comprehensions_and_generators():
 
 
 # =============================================================================
-# 4. ITERTOOLS
+# ITERTOOLS
 # =============================================================================
 import itertools
 
