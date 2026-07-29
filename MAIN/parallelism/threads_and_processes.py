@@ -25,7 +25,7 @@ def start_join():
     )
 
     thread_object.start()  # start thread
-    thread_object.join()  # await result
+    thread_object.join()  # await result, WICHTIG: join() gibt immer None zurück, kein return value aus berechnung
 
 
 ############################

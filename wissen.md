@@ -62,6 +62,15 @@ concrete mechanisms that Python uses to store names.
 # global keyword
 Das Schlüsselwort global signalisiert Python, dass eine Variable innerhalb einer Funktion nicht als lokale Variable erstellt werden soll, sondern sich auf eine bereits existierende Variable im globalen Gültigkeitsbereich (dem Hauptskript) beziehthey’re stored in a special attribute called .__dict__ in a module.
 
+# function suspesion point
+Ein Punkt, an dem eine Funktion ihre Ausführung unterbricht und die Kontrolle an den Aufrufer zurückgibt, während sie ihren Zustand beibehält, um später fortgesetzt zu werden.
+
+# Coroutines
+Coroutinen sind spezielle Funktionen, die ihre Ausführung anhalten und später wieder aufnehmen können.
+- a coroutine can 'await' another coroutine and use its result, just like 
+  a function calls another function and uses its return value
+
+
 ## Primitives
 
 # Ints
