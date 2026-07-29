@@ -1,17 +1,4 @@
 Kapitel 1 fertig
+Kapitel 2 fertig
+Kapitel 3 nur noch basic vererbung
 Kapitel 8 fertig
-
-
--classes
-    -abc
-    -cls keyword
-    -dataclass
-    -enum
-    -property
-    -für Klassen relevante sonstige annotations
-    -dunda methods
--decorator
--generator
--iterator
--lambda
--pattern_matching
