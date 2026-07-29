@@ -25,6 +25,14 @@ return \
 # Wie verhalten sich default Values in Python?
 Nutze niemals veränderliche Objekte (wie [] oder {} oder Instanzen von Klassen ) als Standardargumente in Funktionsdefinitionen, da diese nur ein einziges Mal beim Laden des Codes erstellt und danach von allen Funktionsaufrufen geteilt werden. Verwende stattdessen stattdessen immer None als Standardwert und initialisiere die Liste sicher erst innerhalb der Funktion mit if param is None: param = [].
 
+# Was ist eine Klasse in Python?
+Ein Objekt, welches auch Attribute und Methoden(@classmethod) haben kann.
+
+# Was ist der Unterschied zwischen @classmethod und @staticmethod?
+@classmethod ist eine Methode, die zu dem Objekt der Klasse gehört (erster Parameter ist cls)
+@staticmethod ist eine freistehende Methode ohne Zugriff auf cls & self, die aber semantisch zur Klasse passt.
+
+
 ## Primitives
 
 # Ints
