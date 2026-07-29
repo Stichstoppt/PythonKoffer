@@ -10,7 +10,11 @@ GIBT ES NICHT IN PYTHON
 Bei rekursiven Fkts. wird optimiert, wenn im return nur der pure rekursive Aufruf ist ohne Berechnung
 
 # Global Interpreter Lock (GIL)
-Die GIL (Global Interpreter Lock) ist ein Synchronisationsmechanismus in CPython, der sicherstellt, dass immer nur ein Thread gleichzeitig Python-Bytecode ausführt. Dadurch wird die Speicherverwaltung von Python threadsicher, allerdings blockiert es echtes Multithreading auf Multi-Core-CPUs bei rechenintensiven Aufgaben (CPU-bound).
+Die GIL (Global Interpreter Lock) ist ein Synchronisationsmechanismus in CPython, der sicherstellt, dass immer nur ein Thread gleichzeitig Python-Bytecode ausführt. Dadurch wird die Speicherverwaltung von Python threadsicher, allerdings blockiert es echtes Multithreading auf Multi-Core-CPUs bei rechenintensiven Aufgaben (CPU-bound)
+
+# Method Resulution Order (MRO)
+Method resolution order (or MRO) sagt Python wie es nach vererbten Methoden 
+zu suchen hat. Sagt genau, wo genau super() suchen wird und in welcher Reihenfolge.
 
 # Deadlock
 Zwei oder mehr Threads blockieren sich dauerhaft gegenseitig, weil jeder auf eine Ressource wartet, die der andere gerade hält.
@@ -31,6 +35,9 @@ Ein Objekt, welches auch Attribute und Methoden(@classmethod) haben kann.
 # Was ist der Unterschied zwischen @classmethod und @staticmethod?
 @classmethod ist eine Methode, die zu dem Objekt der Klasse gehört (erster Parameter ist cls)
 @staticmethod ist eine freistehende Methode ohne Zugriff auf cls & self, die aber semantisch zur Klasse passt.
+
+# Lazy Evaluation
+Lazy Evaluation bedeutet, dass Ausdrücke oder Daten erst in dem Moment berechnet werden, in dem ihr Ergebnis tatsächlich benötigt wird.
 
 
 ## Primitives
