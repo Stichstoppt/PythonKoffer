@@ -27,3 +27,8 @@ example_instance = example("I am an instance variable")
     - Klassenobjekt(cls) ist die Klasse als Objekt im Speicher, kann Funktionen und Attribute haben
     - Objekt einer Klasse ist aus Klasse erzeugtes Objekt!
 """
+"""
+    Wann @classmethod und wann @staticmethod?
+    - @classmethod: wenn man Zugriff auf die Klasse selbst benötigt -> vorallem Factories
+    - @staticmethod: Funktion die keinen Zugriff auf die Klasse oder Instanz benötigt, nur kontextuell passt
+"""

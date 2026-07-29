@@ -33,4 +33,3 @@ Rückgabewert: Darf niemals etwas zurückgeben (gibt implizit None zurück). Ein
 __del__(self)
 wird aufgerufen, wenn Referenzcounter auf Objekt null wird
 ===================================================
-"""
