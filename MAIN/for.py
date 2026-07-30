@@ -1,15 +1,13 @@
-######################
-######for-loops#######
-######################
+"""for-loops"""
 
 
 def some_condition(x):
     return x == 3
 
 
-# =============================================================================
+# ===================================
 # CORE MECHANICS & BUILT-IN ITERATORS
-# =============================================================================
+# ===================================
 def core_mechanics():
     print("--- 1. Core Mechanics ---")
 
@@ -64,26 +62,6 @@ def for_else_mechanic():
             break
     else:
         print("Case B: This will NEVER print because of the break.")
-
-
-# =============================================================================
-# COMPREHENSIONS & GENERATORS
-# =============================================================================
-def comprehensions_and_generators():
-    print("\n--- 3. Comprehensions & Generators ---")
-
-    # List Comprehension [expression for item in iterable if condition]
-    squares = [x**2 for x in range(5) if x % 2 == 0]
-    print(f"List Comp: {squares}")  # [0, 4, 16]
-
-    # Dict Comprehension
-    char_counts = {char: idx for idx, char in enumerate("ABC")}
-    print(f"Dict Comp: {char_counts}")  # {'A': 0, 'B': 1, 'C': 2}
-
-    # Generator Expression (Memory efficient, lazy evaluation)
-    lazy_squares = (x**2 for x in range(1000000))
-    print(f"Generator Type: {type(lazy_squares)}")  # <class 'generator'>
-    print(f"First element: {next(lazy_squares)}")  # 0
 
 
 # =============================================================================
