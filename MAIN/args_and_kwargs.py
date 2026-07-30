@@ -27,11 +27,6 @@ def super_funktion(
     print(f"{args} ist ein Tupel!")
     print(f"{kwargs} ist ein Dict!")
 
-    a, b, _, *list = (
-        args  # args wird entpackt, '_' ist ein Platzhalter für das 3. Element
-    )
-    neue_liste = [a, *args, c]  # args entpacken!!
-
 
 # --- DER AUFRUF (So verhalten sich die Argumente) ---
 
