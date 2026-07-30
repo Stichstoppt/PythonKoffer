@@ -70,6 +70,21 @@ Coroutinen sind spezielle Funktionen, die ihre Ausführung anhalten und später 
 - a coroutine can 'await' another coroutine and use its result, just like 
   a function calls another function and uses its return value
 
+## Verschieden Arten von Typing
+
+# Nominal Typing (a.k.a. "Name matters")
+Ein Typ wird durch seinen Namen identifiziert, nicht durch seine Struktur. Wenn zwei Typen dieselben Methoden und Felder, aber unterschiedliche Namen haben, werden sie als unterschiedliche Typen betrachtet.
+
+# Subtyping (a.k.a. "Inheritance hierarchy")
+Ein Typ ist ein Subtyp eines anderen, wenn er von ihm erbt. Das ist klassische OOP (objektorientierte Programmierung). Subtyping ist in Python nominal: Es geht um die deklarierte Vererbung
+
+
+# Duck Typing (a.k.a. "Runtime YOLO typing")
+„Wenn es wie eine Ente quakt und wie eine Ente schwimmt, ist es eine Ente.“Das wird beim Type-Checking (der statischen Typprüfung) nicht erzwungen, sondern einfach zur Laufzeit vorausgesetzt – das ist Pythons Standard-Stil
+
+
+# Structural Typing (a.k.a. "Looks like a duck" or "Duck typing with type hints")
+Wenn es die richtigen Methoden/Attribute hat, passt es — selbst wenn es nicht als Subtyp deklariert ist. Eingeführt mit: Python 3.8+ über typing.Protocol.Duck Typing, das schon zur Compile-Zeit quakt (Pythons Weg, das Beste aus beiden Welten zu vereinen).“
 
 ## Primitives
 

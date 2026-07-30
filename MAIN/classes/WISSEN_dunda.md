@@ -15,14 +15,14 @@ WICHTIG: Wenn __repr__ definiert ist aber kein __str__, ruft print das __repr__ 
 ===================================================
 
 ===================================================
-# Was ist der Unterschied zwischen __repr__ und __str__?
+# Was ist der Unterschied zwischen __init__ und __new__?
 __new__(cls, ...) – Die Geburt
 Aufgabe: Erstellt die eigentliche Instanz der Klasse im Arbeitsspeicher.
 Typ: Es ist eine Klassenmethode (erhält als ersten Parameter die Klasse cls, nicht die Instanz self).
 Rückgabewert: Muss zwingend das neu erstellte Objekt zurückgeben (über super().__new__(cls)). Wenn hier nichts zurückgegeben wird, bricht der Prozess ab und __init__ wird niemals aufgerufen.
 Einsatzbereich: Wird in 99 % der Fälle nicht angefasst. Man braucht es fast nur für fortgeschrittene Muster, wie das Erzeugen von Singletons oder das Vererben von unveränderlichen Typen (int, str, tuple).
 
-__init__(self, ...) – Die Taufe
+__init__ (self, ...) – Die Taufe
 Aufgabe: Befüllt das frisch gebackene Objekt mit Attributen (Zuweisung von self.name = ...).
 Typ: Es ist eine Instanzmethode (erhält das bereits existierende Objekt als self).
 Rückgabewert: Darf niemals etwas zurückgeben (gibt implizit None zurück). Ein return mit einem Wert führt sofort zu einem TypeError.
